@@ -1,0 +1,27 @@
+# Optional one-click Render Blueprint (New → Blueprint). A disk needs a paid plan; on "free" remove the disk block
+# and DATA_DIR (data will then reset on every deploy/restart).
+services:
+  - type: web
+    name: imat1-server
+    runtime: node
+    plan: starter
+    buildCommand: npm install
+    startCommand: npm start
+    healthCheckPath: /healthz
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: JWT_SECRET
+        generateValue: true
+      - key: DATA_DIR
+        value: /var/data
+      - key: APP_URL
+        sync: false        # e.g. https://imat1-server.onrender.com  (used in password-reset emails)
+      - key: RESEND_API_KEY
+        sync: false        # for reset emails (or set SMTP_URL instead)
+      - key: MAIL_FROM
+        sync: false        # e.g. I'm at 1% <no-reply@yourdomain.com>
+    disk:
+      name: data
+      mountPath: /var/data
+      sizeGB: 1

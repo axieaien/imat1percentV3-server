@@ -1,0 +1,21 @@
+{
+  "name": "imat1percent-server",
+  "version": "3.0.0",
+  "description": "I'm at 1% - Live Battery Assistance. Standalone Node.js server (no Firebase).",
+  "main": "server.js",
+  "type": "commonjs",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "express": "^4.19.2",
+    "jsonwebtoken": "^9.0.2",
+    "nodemailer": "^6.9.14",
+    "ws": "^8.17.0"
+  }
+}
